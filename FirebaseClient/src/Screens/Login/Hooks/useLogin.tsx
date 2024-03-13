@@ -13,7 +13,7 @@ const useLogin=()=>{
 
     async function makeLogin(credential : Iprops){
         try {
-            setLoggedIn((prev)=>!prev)
+            setLoading((prev)=>!prev)
             const {email, password} = credential;
                         await setPersistence(auth,browserLocalPersistence) 
         const SignIn =  await signInWithEmailAndPassword(auth,email,password);
@@ -24,7 +24,8 @@ const useLogin=()=>{
         localStorage.setItem('token',token);
         localStorage.setItem('expirationTime',expirationTime);
         localStorage.setItem('isAuhenticate',true.toString());
-        setLoggedIn((prev)=>!prev)
+        setLoggedIn(true);
+        setLoading((prev)=>!prev)
        
         return false;
         } catch (error) {
