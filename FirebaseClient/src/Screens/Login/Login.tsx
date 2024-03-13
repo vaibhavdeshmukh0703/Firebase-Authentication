@@ -10,7 +10,7 @@ const Login =()=>{
         password: '',
       });
         
-      const handleChange = (e) => {
+      const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
           ...formData,
@@ -18,7 +18,7 @@ const Login =()=>{
         });
       };
     
-      const handleSubmit = async(e) => {
+      const handleSubmit = async(e:React.FormEvent<HTMLFormElement>) => {
         try {
           e.preventDefault();
           // You can handle form submission logic here
@@ -60,7 +60,7 @@ const Login =()=>{
                 placeholder="Enter your password"
                 name="password"
                 value={formData.password}
-                onChange={handleChange}
+                onChange={()=>handleChange}
               />
             </div>
             <div className="flex items-center justify-between">
