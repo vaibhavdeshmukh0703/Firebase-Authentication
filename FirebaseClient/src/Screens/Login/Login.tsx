@@ -22,7 +22,7 @@ const Login =()=>{
         try {
           e.preventDefault();
           // You can handle form submission logic here
-          console.log('Form submitted:', formData);
+          //console.log('Form submitted:', formData);
            await makeLogin(formData);
          
         } catch (error) {
@@ -34,7 +34,7 @@ const Login =()=>{
         <div className="w-full max-w-xs mx-auto">
           {isLoggedIn && <Dashboard/>}
           <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div className="bg-red-200 border-2 p-2 text-white text-base font-medium">{error}</div>
+           {error.length>0 && <div className="bg-red-200 border-2 p-2 text-white text-base font-medium">{error}</div>}
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                 Email Address
@@ -60,7 +60,7 @@ const Login =()=>{
                 placeholder="Enter your password"
                 name="password"
                 value={formData.password}
-                onChange={()=>handleChange}
+                onChange={handleChange}
               />
             </div>
             <div className="flex items-center justify-between">
